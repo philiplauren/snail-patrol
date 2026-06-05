@@ -1,12 +1,11 @@
-
-import React, { useMemo, useState } from 'react';
-import { createRoot } from 'react-dom/client';
-import { MapPin, Trophy, User, PlusCircle, Snail } from 'lucide-react';
+import React, { useMemo, useState } from "react";
+import { createRoot } from "react-dom/client";
+import { MapPin, Trophy, User, PlusCircle, Snail } from "lucide-react";
 
 import 'leaflet/dist/leaflet.css';
 import './styles.css';
 
-import MapView from "./Components/MapView";
+import MapView from "./components/MapView";
 import AddRescue from "./components/AddRescue";
 import Ranking from "./components/Ranking";
 import Profile from "./components/Profile";
