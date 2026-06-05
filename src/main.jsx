@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import { getRescues, createRescue } from "./supabase";
 import { createRoot } from "react-dom/client";
 import { MapPin, Trophy, User, PlusCircle, Snail } from "lucide-react";
 
@@ -10,18 +11,32 @@ import AddRescue from "./components/AddRescue";
 import Ranking from "./components/Ranking";
 import Profile from "./components/Profile";
 
-import { loadRescues, saveRescues } from "./utils/storage";
-
 function App() {
   const [tab, setTab] = useState('map');
-  const [rescues, setRescues] = useState(loadRescues);
+  const [rescues, setRescues] = useState([]);
 
-  function addRescue(rescue) {
-    const next = [rescue, ...rescues];
-    setRescues(next);
-    saveRescues(next);
-    setTab('map');
+  useEffect(() => {
+  async function loadData() {
+    const data = await getRescues();
+    setRescues(data);
   }
+
+  loadData();
+}, []);
+
+  async function addRescue(rescue) {
+  const saved = await createRescue({
+    username: rescue.username,
+    species: rescue.species,
+    comment: rescue.comment,
+    lat: rescue.lat,
+    lng: rescue.lng,
+    image_url: rescue.image,
+  });
+
+  setRescues([saved[0], ...rescues]);
+  setTab('map');
+}
 
   const leaderboard = useMemo(() => {
     const counts = {};
