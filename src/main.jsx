@@ -7,9 +7,9 @@ import 'leaflet/dist/leaflet.css';
 import './styles.css';
 
 import MapView from "./Components/MapView";
-import AddRescue from "./Components/AddRescue";
-import Ranking from "./Components/Ranking";
-import Profile from "./Components/Profile";
+import AddRescue from "./components/AddRescue";
+import Ranking from "./components/Ranking";
+import Profile from "./components/Profile";
 
 import { loadRescues, saveRescues } from "./utils/storage";
 
