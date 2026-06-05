@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { getRescues, createRescue } from "./supabase";
+import { getRescues, createRescue } from "./supabase.js";
 import { createRoot } from "react-dom/client";
 import { MapPin, Trophy, User, PlusCircle, Snail } from "lucide-react";
 
